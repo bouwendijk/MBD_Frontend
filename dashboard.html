@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard - MBD</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>MBD Dashboard</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="dashboard.html">Dashboard</a>
+    </nav>
+  </header>
+  <main>
+    <section>
+      <h2>Klantenlijst</h2>
+      <ul id="klantenlijst"></ul>
+    </section>
+  </main>
+  <footer>
+    <p>&copy; 2025 MBD Allround</p>
+  </footer>
+  <script>
+    fetch('https://backend-6qfg.onrender.com/klanten')
+      .then(res => res.json())
+      .then(data => {
+        const ul = document.getElementById('klantenlijst');
+        data.forEach(klant => {
+          const li = document.createElement('li');
+          li.textContent = `${klant.naam} (${klant.email})`;
+          ul.appendChild(li);
+        });
+      })
+      .catch(err => console.error('Fout bij ophalen klanten:', err));
+  </script>
+</body>
+</html>
