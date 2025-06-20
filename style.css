@@ -1,31 +1,24 @@
 body {
+  background: #FFFFFF;
+  color: #4D4D4D;
   font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 0;
-  background-color: #f4f4f4;
 }
+
+header, footer, button {
+  background: #02457A;
+  color: #FFF;
+}
+
 header {
-  background-color: #1c1c1c;
-  color: white;
-  padding: 1em;
+  padding: 1rem;
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  <img src="MBD_Logo.png" alt="MBD Allround Klimaatbeheer" style="height:40px; margin-right: 0.5rem;">
+<h1>Dashboard</h1>
 }
-nav a {
-  color: white;
-  margin-left: 1em;
-  text-decoration: none;
-}
-main {
-  padding: 2em;
-}
-footer {
-  background-color: #1c1c1c;
-  color: white;
-  text-align: center;
-  padding: 1em;
-  position: fixed;
-  bottom: 0;
-  width: 100%;
+
+button {
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
 }
