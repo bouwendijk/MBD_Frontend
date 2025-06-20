@@ -1,40 +1,53 @@
 <!DOCTYPE html>
 <html lang="nl">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Dashboard - MBD</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard - MBD Allround</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header>
-    <h1>MBD Dashboard</h1>
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="dashboard.html">Dashboard</a>
-    </nav>
-  </header>
-  <main>
-    <section>
-      <h2>Klantenlijst</h2>
-      <ul id="klantenlijst"></ul>
-    </section>
-  </main>
-  <footer>
-    <p>&copy; 2025 MBD Allround</p>
-  </footer>
+  <h1>MBD Allround Dashboard</h1>
+
+  <section>
+    <h2>Klanten</h2>
+    <ul id="klanten-lijst"></ul>
+  </section>
+
+  <section>
+    <h2>Materialen</h2>
+    <ul id="materialen-lijst"></ul>
+  </section>
+
   <script>
-    fetch('https://backend-6qfg.onrender.com/klanten')
+    // Backend URL
+    const backendUrl = 'https://backend-6qfg.onrender.com';
+
+    // Klanten ophalen
+    fetch(`${backendUrl}/api/klanten`)
       .then(res => res.json())
-      .then(data => {
-        const ul = document.getElementById('klantenlijst');
-        data.forEach(klant => {
+      .then(klanten => {
+        const ul = document.getElementById('klanten-lijst');
+        klanten.forEach(k => {
           const li = document.createElement('li');
-          li.textContent = `${klant.naam} (${klant.email})`;
+          li.textContent = `${k.naam} - ${k.email}`;
           ul.appendChild(li);
         });
       })
       .catch(err => console.error('Fout bij ophalen klanten:', err));
+
+    // Materialen ophalen
+    fetch(`${backendUrl}/api/materialen`)
+      .then(res => res.json())
+      .then(materialen => {
+        const ul = document.getElementById('materialen-lijst');
+        materialen.forEach(m => {
+          const li = document.createElement('li');
+          li.textContent = `${m.naam} (${m.categorie}) - €${m.prijs}`;
+          ul.appendChild(li);
+        });
+      })
+      .catch(err => console.error('Fout bij ophalen materialen:', err));
   </script>
 </body>
 </html>
