@@ -37,6 +37,23 @@
       .catch(err => console.error('Fout bij ophalen klanten:', err));
 
     // Materialen ophalen
+    <script>
+  document.querySelector('a[href="klanten.html"]').addEventListener('click', (e) => {
+    e.preventDefault();
+    fetch('https://backend-6qfg.onrender.com/api/klanten')
+      .then(res => res.json())
+      .then(data => console.log('Klanten:', data))
+      .catch(err => console.error(err));
+  });
+
+  document.querySelector('a[href="materialen.html"]').addEventListener('click', (e) => {
+    e.preventDefault();
+    fetch('https://backend-6qfg.onrender.com/api/materialen')
+      .then(res => res.json())
+      .then(data => console.log('Materialen:', data))
+      .catch(err => console.error(err));
+  });
+</script>
     fetch(`${backendUrl}/api/materialen`)
       .then(res => res.json())
       .then(materialen => {
